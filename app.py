@@ -1,13 +1,14 @@
+import os
 from flask import Flask, render_template, request
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
 
+
 app = Flask(__name__)
 
-client = MongoClient(
-    "mongodb+srv://ah540223_db_user:mongodbatlas540223@cluster0.cxzselc.mongodb.net/fearless_fighter?retryWrites=true&w=majority&appName=Cluster0"
-)
+client = MongoClient(os.environ["MONGODB_URI"])
+
 db = client["fearless_fighter"]
 collection = db["player_stat"]
 suggestions_collection = db["suggestions"]
