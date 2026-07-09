@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}About Cricket{% endblock %}
+
+{% block content %}
+
+<section id="origin-section">
+
+    <div class="history-banner">
+        <h1>History of Cricket</h1>
+        <p>
+            From village fields in England to packed international stadiums,
+            cricket has become one of the world's most loved sports.
+        </p>
+    </div>
+
+</section>
+
+<section id="legacy-zone">
+
+    <div class="legacy-wrapper">
+
+        <div class="chronicle-image">
+            <img src="{{ url_for('static', filename='images/cricket-history.jpg') }}">
+        </div>
+
+        <div class="chronicle-story">
+
+            <h2>The Journey of Cricket</h2>
+
+            <p>
+                Cricket originated in England during the 16th century.
+                It gradually evolved into an international sport and today
+                it is played professionally in more than one hundred countries.
+            </p>
+
+            <p>
+                The first officially recognized Test Match was played in
+                1877 between England and Australia. Since then, One Day
+                Internationals and T20 cricket have transformed the game,
+                making it faster and even more exciting.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="timeline-space">
+
+    <h2 class="timeline-title">Cricket Through Time</h2>
+
+    <div class="history-line">
+
+        <div class="moment-card">
+            <span>16th Century</span>
+            <p>Cricket began in England.</p>
+        </div>
+
+        <div class="moment-card">
+            <span>1744</span>
+            <p>First official Laws of Cricket.</p>
+        </div>
+
+        <div class="moment-card">
+            <span>1877</span>
+            <p>First Test Match played.</p>
+        </div>
+
+        <div class="moment-card">
+            <span>1975</span>
+            <p>First Cricket World Cup.</p>
+        </div>
+
+        <div class="moment-card">
+            <span>2007</span>
+            <p>First ICC T20 World Cup.</p>
+        </div>
+
+        <div class="moment-card">
+            <span>Today</span>
+            <p>Millions enjoy cricket worldwide.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="facts-space">
+
+    <h2>Cricket Around the World</h2>
+
+    <div class="facts-layout">
+
+        <div class="fact-box">
+            <h3>100+</h3>
+            <p>Cricket Playing Nations</p>
+        </div>
+
+        <div class="fact-box">
+            <h3>12</h3>
+            <p>ICC Full Members</p>
+        </div>
+
+        <div class="fact-box">
+            <h3>2.5B+</h3>
+            <p>Global Fans</p>
+        </div>
+
+        <div class="fact-box">
+            <h3>150+</h3>
+            <p>Years of International Cricket</p>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Player Details - Fearless Fighter{% endblock %}
+
+{% block content %}
+    <section id="champion-profile">
+
+    <div class="profile-shell">
+
+        <div class="portrait-zone">
+            <img src="{{ url_for('static', filename=player.image) }}" alt="Player Image">
+        </div>
+
+        <div class="identity-zone">
+
+            <span class="status-badge">
+                National Cricketer
+            </span>
+
+            <h1>{{ player.name }}</h1>
+
+            <h3>{{ player.position }}</h3>
+
+
+            <div class="record-board">
+
+                <div class="score-tile">
+                    <h2>{{ player.Score }}</h2>
+                    <span>Runs</span>
+                </div>
+
+                <div class="score-tile">
+                    <h2>{{ player.avg }}</h2>
+                    <span>Average</span>
+                </div>
+
+                <div class="score-tile">
+                    <h2>{{ player.innings }}</h2>
+                    <span>Innings</span>
+                </div>
+
+                <div class="score-tile">
+                    <h2>{{ player.jersey }}</h2>
+                    <span>Jersey</span>
+                </div>
+
+                <div class="score-tile">
+                    <h2>{{ player.century }}</h2>
+                    <span>100s</span>
+                </div>
+
+                <div class="score-tile">
+                    <h2>{{ player.fifty }}</h2>
+                    <span>50s</span>
+                </div>
+
+            </div>
+
+            <a href="{{ url_for('submit_suggestion') }}" class="action-trigger">
+                Follow Player
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}
