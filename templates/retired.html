@@ -2,3 +2,29 @@
 {% block title %}Retired Fighters{% endblock %}
 
 {% block content %}
+
+
+<section id="warrior-gallery">
+
+    <div class="battle-heading">
+        <h2>Our Legendary Fighters</h2>
+    </div>
+
+    <div class="arena-grid">
+        {% for stat in players %}
+
+
+        <article class="phoenix-box">
+            <img src="{{url_for('static', filename=stat.image)}}" alt="Fighter">
+            <div class="valor-panel">
+                <h3>{{stat.name}}</h3>
+                <a href="{{ url_for('details', player_id=stat._id) }}">More Info</a>
+
+            </div>
+        </article>
+
+        {% endfor %}
+    </div>
+
+</section>
+{% endblock %}

@@ -12,6 +12,7 @@ client = MongoClient(os.environ["MONGODB_URI"])
 db = client["fearless_fighter"]
 collection = db["player_stat"]
 suggestions_collection = db["suggestions"]
+retired_collection= db['retired_player']
 
 
 @app.route("/")
@@ -32,8 +33,9 @@ def details(player_id):
 
 
 @app.route("/retired")
-def retired():
-    return render_template("retired.html")
+def retired(player_id):
+    players= retired_collection.find_one({"_id": ObjectId(player_id)})
+    return render_template("retired.html", players=players)
 
 
 @app.route("/follow", methods=["GET", "POST"])
@@ -55,6 +57,8 @@ def submit_suggestion():
             }
         )
     return render_template("follow.html")
+@app.route("/retired")
+def retire():
 
 
 if __name__ == "__main__":
