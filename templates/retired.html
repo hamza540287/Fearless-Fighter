@@ -18,7 +18,7 @@
             <img src="{{url_for('static', filename=stat.image)}}" alt="Fighter">
             <div class="valor-panel">
                 <h3>{{stat.name}}</h3>
-                <a href="{{ url_for('details', player_id=stat._id) }}">More Info</a>
+                <a href="{{ url_for('retired_details', player_id=stat._id) }}">More Info</a>
 
             </div>
         </article>

@@ -33,10 +33,14 @@ def details(player_id):
 
 
 @app.route("/retired")
-def retired(player_id):
-    players= retired_collection.find_one({"_id": ObjectId(player_id)})
+def retired():
+    players= retired_collection.find()
     return render_template("retired.html", players=players)
 
+@app.route("/retired_details/<player_id>")
+def retired_details(player_id):
+    player= retired_collection.find_one({"_id":ObjectId(player_id)})
+    return render_template("details.html", player=player)
 
 @app.route("/follow", methods=["GET", "POST"])
 def submit_suggestion():
