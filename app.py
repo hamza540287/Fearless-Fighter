@@ -69,6 +69,11 @@ def match_center():
     match= match_collection.find_one()
     city= match["city"]
     match_date=match['date']
+    
+    match_date = datetime.strptime(
+    match["date"], "%d-%m-%Y"
+     ).strftime("%Y-%m-%d")
+    
     url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={city}&days=7"
     response= requests.get(url)
     data= response.json()
