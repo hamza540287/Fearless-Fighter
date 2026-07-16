@@ -73,6 +73,13 @@ def match_center():
     response= requests.get(url)
     data= response.json()
     
+    # default values for prevent the error on not found match date (on if condition not true)
+    weather = "-"
+    temprature = "-"
+    humidity = "-"
+    rain_chance = "-"
+    wind = "-"
+    
     for day in data["forecast"]["forecastday"]:
         if day["date"]==match_date:
             weather= day["day"]["condition"]["text"]
