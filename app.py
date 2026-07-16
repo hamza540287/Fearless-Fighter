@@ -67,8 +67,8 @@ def submit_suggestion():
 @app.route('/match')
 def match_center():
     match= match_collection.find_one()
-    city= match["city"]
-    match_date=match['match']
+    city= match["venue"]
+    match_date=match['date']
     url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={city}&days=7"
     response= requests.get(url)
     data= response.json()
