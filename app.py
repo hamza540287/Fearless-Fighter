@@ -3,16 +3,19 @@ from flask import Flask, render_template, request
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
+import requests
 
 
 app = Flask(__name__)
 
 client = MongoClient(os.environ["MONGODB_URI"])
+api_key= os.environ["WEATHER_API_KEY"]
 
 db = client["fearless_fighter"]
 collection = db["player_stat"]
 suggestions_collection = db["suggestions"]
 retired_collection= db['retired_player']
+match_collection= db['match_center']
 
 
 @app.route("/")
@@ -61,6 +64,46 @@ def submit_suggestion():
             }
         )
     return render_template("follow.html")
+@app.route('/match')
+def match_center():
+    match= match_collection.find_one()
+    city= match["city"]
+    match_date=match['match']
+    url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={city}&days=7"
+    response= requests.get(url)
+    data= response.json()
+    sunday= None
+    for day in data["forecast"]["forcastday"]:
+        if day["date"]==match_date:
+            weather= day["day"]["condition"]["text"]
+            temprature= day["day"]["avgtemp_c"]
+            humidity= day["day"]["avghumidity"]
+            rain_chance= sunday["day"]["daily_chance_of_rain"]
+            wind=day["day"]["maxwind_kph"]
+
+            break
+    return render_template(
+        "match_center.html",
+        match=match,
+        weather=weather,
+        temprature=temprature,
+        humidity=humidity,
+        rain_chance=rain_chance,
+        wind=wind
+    )
+
+
+
+       
+
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

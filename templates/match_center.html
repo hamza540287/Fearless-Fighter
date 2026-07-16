@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Match Center - Fearless Fighter{% endblock %}
+
+{% block content %}
+
+<section id="stadium-zone">
+
+    <div class="fixture-shell">
+
+        <div class="fixture-heading">
+
+            <span class="fixture-tag">Upcoming Clash</span>
+
+            <h1>Sunday Cricket Showdown</h1>
+
+            <p>
+                Get ready for another thrilling battle. Witness the excitement,
+                support your favorite players, and enjoy every moment of the game.
+            </p>
+
+        </div>
+
+        <div class="fixture-board">
+
+            <div class="club-box">
+
+                <img src="{{ url_for('static', filename='images/team1.jpeg') }}" alt="Team 1">
+
+                <h2>{{match.team1}}</h2>
+
+            </div>
+
+            <div class="battle-clock">
+
+                <h2>VS</h2>
+
+                <span>{{match.time}}</span>
+
+            </div>
+
+            <div class="club-box">
+
+                <img src="{{ url_for('static', filename='images/team2.jpg') }}" alt="Team 2">
+
+                <h2>{{match.team2}}</h2>
+
+            </div>
+
+        </div>
+
+        <div class="venue-panel">
+
+            <div class="venue-card">
+                <h3>📍 Venue</h3>
+                <p>{{macth.venue}}</p>
+            </div>
+
+            <div class="venue-card">
+                <h3>🏏 Format</h3>
+                <p>{{match.format}}</p>
+            </div>
+
+            <div class="venue-card">
+                <h3>🎟 Entry</h3>
+                <p>Free for Everyone</p>
+            </div>
+
+            <div class="venue-card">
+                <h3>🌤 {{weather}}</h3>
+                <p>{{temparature}}</p>
+            </div>
+
+        </div>
+
+        <div class="count-section">
+
+            <a href="{{ url_for('follow') }}" class="fixture-button">
+                Join Support
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
