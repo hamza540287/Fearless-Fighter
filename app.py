@@ -72,13 +72,13 @@ def match_center():
     url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={city}&days=7"
     response= requests.get(url)
     data= response.json()
-    sunday= None
-    for day in data["forecast"]["forcastday"]:
+    
+    for day in data["forecast"]["forecastday"]:
         if day["date"]==match_date:
             weather= day["day"]["condition"]["text"]
             temprature= day["day"]["avgtemp_c"]
             humidity= day["day"]["avghumidity"]
-            rain_chance= sunday["day"]["daily_chance_of_rain"]
+            rain_chance= day["day"]["daily_chance_of_rain"]
             wind=day["day"]["maxwind_kph"]
 
             break
