@@ -9,8 +9,6 @@ import requests
 app = Flask(__name__)
 
 client = MongoClient(os.environ["MONGODB_URI"])
-# api_key= os.environ["WEATHER_API_KEY"]
-
 db = client["fearless_fighter"]
 collection = db["player_stat"]
 suggestions_collection = db["suggestions"]
@@ -64,40 +62,7 @@ def submit_suggestion():
             }
         )
     return render_template("follow.html")
-# @app.route('/match')
-# def match_center():
-#     match= match_collection.find_one()
-#     city= match["city"]
-#     match_date=match['date']
-#     url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={city}&days=7"
-#     response= requests.get(url)
-#     data= response.json()
-    
-#     # default values for prevent the error on not found match date (on if condition not true)
-#     weather = "-"
-#     temprature = "-"
-#     humidity = "-"
-#     rain_chance = "-"
-#     wind = "-"
-    
-#     for day in data["forecast"]["forecastday"]:
-#         if day["date"]==match_date:
-#             weather= day["day"]["condition"]["text"]
-#             temprature= day["day"]["avgtemp_c"]
-#             humidity= day["day"]["avghumidity"]
-#             rain_chance= day["day"]["daily_chance_of_rain"]
-#             wind=day["day"]["maxwind_kph"]
 
-#             break
-#     return render_template(
-#         "match_center.html",
-#         match=match,
-#         weather=weather,
-#         temprature=temprature,
-#         humidity=humidity,
-#         rain_chance=rain_chance,
-#         wind=wind
-#     )
 @app.route('/match')
 def match_center():
     match = match_collection.find_one()
