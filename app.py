@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
@@ -21,6 +21,10 @@ def home():
     stat = collection.find()
     return render_template("home.html", players=stat)
 
+# Route for live on google
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
 
 @app.route("/about")
 def about():
